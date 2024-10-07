@@ -72,7 +72,7 @@ class EliteDangereuse:
         self.save_data()
 
 
-    def journal_entry(self, cmdr, is_beta, system, station, entry, state):
+    def journal_entry(self, cmdr: str, is_beta: bool, system: str | None, station: str | None, entry: dict, state: dict):
         """
         Parse an incoming journal entry and store the data we need
         """
