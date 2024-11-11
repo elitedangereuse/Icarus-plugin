@@ -10,7 +10,7 @@ from semantic_version import Version
 from elitedangereuse.constants import RequestMethod
 from elitedangereuse.debug import Debug
 from elitedangereuse.httprequestmanager import EliteDangereuseRequest
-from elitedangereuse.utils import tl
+# from elitedangereuse.utils import tl
 
 BACKUPS_KEEP = 3
 DATETIME_FORMAT = "%Y-%m-%d-%H-%M-%S"
@@ -116,7 +116,7 @@ class UpdateManager:
         """
         Backup the old plugin and extract the new, ready for next launch
         """
-        Debug.logger.info(f"Auto updating BGS-Tally from version {self.elitedangereuse.version} to {self.remote_version}")
+        Debug.logger.info(f"Auto updating Icarus from version {self.elitedangereuse.version} to {self.remote_version}")
 
         self._create_backup()
         self._delete_old_backups()
