@@ -7,7 +7,7 @@ from elitedangereuse.debug import Debug
 from elitedangereuse.elitedangereuse import EliteDangereuse
 
 PLUGIN_NAME = "EliteDangereuse"
-PLUGIN_VERSION = semantic_version.Version.coerce("1.0.0-dev")
+PLUGIN_VERSION = semantic_version.Version.coerce("0.0.1-dev")
 
 # Initialise the main plugin class
 elitedangereuse.globals.this = this = EliteDangereuse(PLUGIN_NAME, PLUGIN_VERSION)
@@ -55,3 +55,10 @@ def journal_entry(cmdr: str, is_beta: bool, system: str | None, station: str | N
     Parse an incoming journal entry and store the data we need
     """
     this.journal_entry(cmdr, is_beta, system, station, entry, state)
+
+
+def dashboard_entry(cmdr: str, is_beta: bool, entry: dict):
+    """
+    Parse an incoming dashboard entry and store the data we need
+    """
+    this.dashboard_entry(cmdr, is_beta, entry)

@@ -4,6 +4,7 @@ from threading import Thread
 from time import sleep
 
 import semantic_version
+from typing import Any, Iterator, Mapping, MutableMapping
 
 from config import appversion, config
 from elitedangereuse.config import Config
@@ -11,7 +12,7 @@ from elitedangereuse.debug import Debug
 from elitedangereuse.httprequestmanager import HTTPRequestManager
 from elitedangereuse.ui import UI
 from elitedangereuse.updatemanager import UpdateManager
-from elitedangereuse.websocketmanager import WebsocketManager
+from elitedangereuse.requestmanager import RequestManager
 
 TIME_WORKER_PERIOD_S = 60
 
@@ -57,7 +58,7 @@ class EliteDangereuse:
         # Main Classes
         self.request_manager: HTTPRequestManager = HTTPRequestManager(self)
         self.update_manager: UpdateManager = UpdateManager(self)
-        self.websocket_manager: WebsocketManager = WebsocketManager(self)
+        self.request_manager: RequestManager = RequestManager(self)
         self.ui: UI = UI(self)
 
         self.thread: Thread = Thread(target=self._worker, name="EliteDangereuse Main worker")
@@ -76,8 +77,17 @@ class EliteDangereuse:
         """
         Parse an incoming journal entry and store the data we need
         """
+        self.request_manager.send_data(cmdr, entry)
 
+        
+    def dashboard_entry(self, cmdr: str, is_beta: bool, entry: dict):
+        """
+        Parse an incoming dashboard entry and store the data we need
+        """
+        Debug.logger.debug("DASHBOARD ENTRY")
+        self.request_manager.send_data(cmdr, entry)
 
+        
     def save_data(self):
         """
         Save all data structures
