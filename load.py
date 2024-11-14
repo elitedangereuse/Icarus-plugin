@@ -7,7 +7,7 @@ from elitedangereuse.debug import Debug
 from elitedangereuse.elitedangereuse import EliteDangereuse
 
 PLUGIN_NAME = "EliteDangereuse"
-PLUGIN_VERSION = semantic_version.Version.coerce("0.0.1-dev")
+PLUGIN_VERSION = semantic_version.Version.coerce("0.0.2-dev")
 
 # Initialise the main plugin class
 elitedangereuse.globals.this = this = EliteDangereuse(PLUGIN_NAME, PLUGIN_VERSION)
