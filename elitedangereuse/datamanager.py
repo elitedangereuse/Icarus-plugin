@@ -16,7 +16,7 @@ class DataManager:
     def send_init_data(self):
         headers = {"Content-Type": "application/json"}
         payload = {
-            "info": "Icarus plugin has started",
+            f"data": f"Icarus {self.elitedangereuse.version} plugin has started",
         }
         self.elitedangereuse.request_manager.queue_request(
             SERVER_URL,
@@ -29,11 +29,11 @@ class DataManager:
         )
 
 
-    def send_data(self, cmdr, info):
+    def send_data(self, cmdr, data):
         headers = {"Content-Type": "application/json"}
         payload = {
             "cmdr": cmdr,
-            "info": info,
+            "data": data,
         }
 
         self.elitedangereuse.request_manager.queue_request(
